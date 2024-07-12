@@ -8,3 +8,25 @@ void func(int n) {
   /* ... */
 }
 ```
+
+
+
+```c
+#include <assert.h>
+#include <stddef.h>
+   
+void process(size_t index) {
+  assert(index > 0); /* No side effect */
+  ++index;
+  /* ... */
+}
+```
+
+> assert is also a Define statment
+
+```c
+#define assert(e)  \
+    ((void) ((e) ? 0 : __assert (#e, __FILE__, __LINE__)))
+#define __assert(e, file, line) \
+    ((void)printf ("%s:%u: failed assertion `%s'\n", file, line, e), abort())
+```
