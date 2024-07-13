@@ -29,3 +29,22 @@ void process(size_t index) {
 #define __assert(e, file, line) \
     ((void)printf ("%s:%u: failed assertion `%s'\n", file, line, e), abort())
 ```
+
+
+```c
+#include <string.h>
+  
+void func(const char *src) {
+  /* Validate the source string; calculate size */
+  char *dest;
+  /* malloc() destination string */
+  memcpy(dest, src,
+    #ifdef PLATFORM1
+      12
+    #else
+      24
+    #endif
+  );
+  /* ... */
+}
+```
